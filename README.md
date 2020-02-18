@@ -35,7 +35,7 @@ No additional tools are required. Just a web browser of your choice.
 2. Click the `Load/Save` button
 3. Add `cutebot.py` to project files
 4. Write your code in editor
-5. Click the `Connect` button, then click the `Flash` button (in Chrome base browser) OR download the hex file and copy it to your micro:bit.
+5. Click the `Connect` button, then click the `Flash` button (in Chromium based browsers) OR download the hex file and copy it to your micro:bit.
 
 
 ### Mu editor (best for beginners)
