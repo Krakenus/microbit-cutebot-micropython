@@ -18,8 +18,8 @@ cutebot.set_motors_speed(SPEED, SPEED)
 while True:
     light = display.read_light_level()
     if light < MIN_LIGHT:
-        cutebot.set_left_rgb_led(255, 255, 255)
-        cutebot.set_right_rgb_led(255, 255, 255)
+        cutebot.set_left_rgb_led(cutebot.RGB_MAX, cutebot.RGB_MAX, cutebot.RGB_MAX)
+        cutebot.set_right_rgb_led(cutebot.RGB_MAX, cutebot.RGB_MAX, cutebot.RGB_MAX)
     else:
-        cutebot.set_left_rgb_led(0, 0, 0)
-        cutebot.set_right_rgb_led(0, 0, 0)
+        cutebot.set_left_rgb_led(cutebot.RGB_MIN, cutebot.RGB_MIN, cutebot.RGB_MIN)
+        cutebot.set_right_rgb_led(cutebot.RGB_MIN, cutebot.RGB_MIN, cutebot.RGB_MIN)

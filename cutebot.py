@@ -24,13 +24,17 @@ FULL_SPEED = const(80)
 SONAR_CM = const(10)
 SONAR_IN = const(20)
 
-# RGB LED POSITIONS
+# RGB LEDS
 RGB_LEFT = const(4)
 RGB_RIGHT = const(8)
+RGB_MIN = const(0)
+RGB_MAX = const(255)
 
 # SERVOS
 SERVO_1 = const(5)
 SERVO_2 = const(6)
+SERVO_ANGLE_MIN = const(0)
+SERVO_ANGLE_MAX = const(180)
 
 
 def _set_motor_speed(motor_position: int, speed: int) -> None:
@@ -127,7 +131,7 @@ def get_sonar_distance(unit: int = SONAR_CM, timeout_us: int = 30000) -> float:
     return -1.0
 
 
-def _set_rgb_led(led: int, r: int = 0, g: int = 0, b: int = 0) -> None:
+def _set_rgb_led(led: int, r: int = RGB_MIN, g: int = RGB_MIN, b: int = RGB_MIN) -> None:
     """
     Sets a color of a single RGB led.
 
@@ -138,9 +142,9 @@ def _set_rgb_led(led: int, r: int = 0, g: int = 0, b: int = 0) -> None:
     buf = bytearray(4)
 
     buf[0] = led
-    buf[1] = r if 0 <= r <= 255 else 0
-    buf[2] = g if 0 <= g <= 255 else 0
-    buf[3] = b if 0 <= b <= 255 else 0
+    buf[1] = r if RGB_MIN <= r <= RGB_MAX else RGB_MIN
+    buf[2] = g if RGB_MIN <= g <= RGB_MAX else RGB_MIN
+    buf[3] = b if RGB_MIN <= b <= RGB_MAX else RGB_MIN
 
     i2c.write(I2C_ADDRESS, buf)
 
@@ -186,10 +190,10 @@ def _set_servo_angle(servo: int, angle: int) -> None:
 
     buf[0] = servo
 
-    if angle < 0:
-        angle = 0
-    elif angle > 180:
-        angle = 180
+    if angle < SERVO_ANGLE_MIN:
+        angle = SERVO_ANGLE_MIN
+    elif angle > SERVO_ANGLE_MAX:
+        angle = SERVO_ANGLE_MAX
 
     buf[1] = angle
     buf[2] = buf[3] = 0

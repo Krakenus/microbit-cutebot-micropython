@@ -70,7 +70,7 @@ These are the same command line tools the Mu editor uses in background.
 4. Upload you program (the name `main.py` is required) `ufs put main.py`
 
 Please note that every use of `uflash` or copying a new hex file will clear the board's storage
-so you .py files copied with `ufs` will be deleted.
+so your .py files copied with `ufs` will be deleted.
 
 ## See also
 
